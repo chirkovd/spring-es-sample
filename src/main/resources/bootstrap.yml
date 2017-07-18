@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: sample-service
+
+info:
+  app:
+    timestamp: @project.version@
+    version: @maven.build.timestamp@

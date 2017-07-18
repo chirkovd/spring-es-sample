@@ -1,0 +1,27 @@
+logging:
+  level:
+    root: INFO
+    com.systems.ss: DEBUG
+    org.springframework: INFO
+    org.springframework.security: INFO
+
+spring:
+  jackson:
+    serialization:
+      write_dates_as_timestamps: false
+  main:
+    banner-mode: "off"
+  data:
+    mongodb:
+      host: spring-es-mongodb
+      username: user
+      password: ${MONGODB_PASSWORD}
+      database: spring-es
+      port: 27017
+
+elasticsearch:
+  host: spring-es-elasticsearchdb
+  port: 9300
+  cluster:
+    name: spring-es
+
