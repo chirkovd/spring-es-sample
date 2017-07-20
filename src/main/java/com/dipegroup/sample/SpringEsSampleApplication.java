@@ -1,7 +1,9 @@
-package com.dipesystems.sample;
+package com.dipegroup.sample;
 
 import com.dipegroup.exceptions.services.exceptions.ExceptionMapper;
 import com.dipegroup.exceptions.services.messages.MessagesService;
+import com.dipegroup.sample.configs.ElasticsearchConfiguration;
+import com.dipegroup.sample.configs.MongoConfiguration;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -16,7 +18,7 @@ import org.springframework.context.annotation.Import;
  * @since 1.8
  */
 
-@Import(ElasticsearchConfiguration.class)
+@Import({ElasticsearchConfiguration.class, MongoConfiguration.class})
 @SpringBootApplication
 public class SpringEsSampleApplication {
 

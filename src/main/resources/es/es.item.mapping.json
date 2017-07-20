@@ -1,0 +1,40 @@
+{
+  "_all": {
+    "enabled": false
+  },
+  "properties": {
+    "id": {
+      "type": "long"
+    },
+    "name": {
+      "type": "text",
+      "analyzer":"russian",
+      "search_analyzer":"russian"
+    },
+    "description":{
+      "type": "text",
+      "analyzer":"russian",
+      "search_analyzer":"russian"
+    },
+    "comment": {
+      "type": "text",
+      "analyzer":"russian",
+      "search_analyzer":"russian"
+    },
+    "type":{
+      "type": "keyword"
+    },
+    "sizes": {
+      "type": "keyword"
+    },
+    "colors": {
+      "type": "keyword"
+    },
+    "price": {
+      "type": "double"
+    },
+    "discount": {
+      "type": "double"
+    }
+  }
+}

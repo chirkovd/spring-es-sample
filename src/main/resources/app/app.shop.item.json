@@ -1,0 +1,78 @@
+{
+  "filters": [
+    {
+      "field": "type",
+      "label": "Item Type",
+      "path": "type",
+      "byValue": true,
+      "ascending": false
+    },
+    {
+      "field": "size",
+      "label": "Item Size",
+      "path": "sizes",
+      "byValue": true,
+      "ascending": false
+    },
+    {
+      "field": "color",
+      "label": "Item Color",
+      "path": "colors",
+      "byValue": false,
+      "ascending": true
+    }
+  ],
+  "sorting": [
+    {
+      "field": "type",
+      "label": "Item Type",
+      "path": "type"
+    },
+    {
+      "field": "size",
+      "label": "Item Size",
+      "path": "sizes"
+    },
+    {
+      "field": "color",
+      "label": "Item Color",
+      "path": "colors"
+    },
+    {
+      "field": "price",
+      "label": "Item Price",
+      "path": "price"
+    },
+    {
+      "field": "id",
+      "label": "Item Register Number",
+      "path": "id"
+    }
+  ],
+  "searches": [
+    {
+      "field": "name",
+      "label": "Item Name",
+      "path": "name",
+      "phrase": true
+    },
+    {
+      "field": "description",
+      "label": "Item Description",
+      "path": "description",
+      "phrase": true
+    },
+    {
+      "field": "comment",
+      "label": "Item Comment",
+      "path": "comment",
+      "phrase": true
+    },
+    {
+      "field": "type",
+      "label": "Item Type",
+      "path": "type",
+      "phrase": false
+    }
+  ]
+}

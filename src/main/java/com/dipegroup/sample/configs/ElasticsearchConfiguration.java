@@ -1,4 +1,4 @@
-package com.dipesystems.sample;
+package com.dipegroup.sample.configs;
 
 import com.dipegroup.exceptions.services.messages.MessagesService;
 import com.dipegroup.spring.es.services.es.ElasticsearchClientService;

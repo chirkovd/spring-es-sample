@@ -1,4 +1,4 @@
-package com.dipesystems.sample.models;
+package com.dipegroup.sample.models;
 
 import com.dipegroup.spring.es.models.objects.EsModel;
 import org.springframework.data.annotation.Id;
@@ -7,9 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Project: ssbe
+ * Project: spring-es-sample
  * Description:
- * Date: 6/19/2017
+ * Date: 5/25/2017
  *
  * @author Dmitriy_Chirkov
  * @since 1.8
@@ -31,8 +31,8 @@ public class EsShopItem implements EsModel<Long> {
     private List<String> sizes = new ArrayList<>();
     private List<String> colors = new ArrayList<>();
 
-    private String price;
-    private String discount;
+    private Long price;
+    private Long discount;
 
     public void setId(Long id) {
         this.id = id;
@@ -86,19 +86,19 @@ public class EsShopItem implements EsModel<Long> {
         this.colors = colors;
     }
 
-    public String getPrice() {
+    public Long getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(Long price) {
         this.price = price;
     }
 
-    public String getDiscount() {
+    public Long getDiscount() {
         return discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(Long discount) {
         this.discount = discount;
     }
 
