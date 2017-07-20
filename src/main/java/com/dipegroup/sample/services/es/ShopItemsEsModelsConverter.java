@@ -4,8 +4,12 @@ import com.dipegroup.sample.dao.ShopItemsDao;
 import com.dipegroup.sample.models.EsShopItem;
 import com.dipegroup.sample.models.MongoShopItem;
 import com.dipegroup.spring.es.services.app.converters.AbstractEsModelsConverter;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 /**
  * Project: spring-es-sample
@@ -19,24 +23,35 @@ import org.springframework.stereotype.Service;
 public class ShopItemsEsModelsConverter extends AbstractEsModelsConverter<MongoShopItem, EsShopItem, Long> {
 
     @Autowired
+    private ObjectMapper objectMapper;
+
+    @Autowired
     public ShopItemsEsModelsConverter(ShopItemsDao appDao) {
         super(appDao);
     }
 
     @Override
     protected void merge(MongoShopItem stored, MongoShopItem item) {
-        // TODO: 7/20/2017 implement method
+        Optional.ofNullable(item.getName()).ifPresent(stored::setName);
+        Optional.ofNullable(item.getDescription()).ifPresent(stored::setDescription);
+        Optional.ofNullable(item.getComment()).ifPresent(stored::setComment);
+        Optional.ofNullable(item.getPrice()).ifPresent(stored::setPrice);
+        Optional.ofNullable(item.getDiscount()).ifPresent(stored::setDiscount);
+        if (CollectionUtils.isNotEmpty(item.getColors())) {
+            stored.setColors(item.getColors());
+        }
+        if (CollectionUtils.isNotEmpty(item.getSizes())) {
+            stored.setSizes(item.getSizes());
+        }
     }
 
     @Override
     public MongoShopItem targetToOriginal(EsShopItem target) {
-        // TODO: 7/20/2017 implement method
-        return null;
+        return objectMapper.convertValue(target, MongoShopItem.class);
     }
 
     @Override
     public EsShopItem originalToTarget(MongoShopItem original) {
-        // TODO: 7/20/2017 implement method
-        return null;
+        return objectMapper.convertValue(original, EsShopItem.class);
     }
 }
