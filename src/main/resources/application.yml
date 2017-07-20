@@ -16,12 +16,12 @@ spring:
       host: spring-es-mongodb
       username: user
       password: ${MONGODB_PASSWORD}
-      database: spring-es
+      database: spring-es-sample
       port: 27017
 
 elasticsearch:
   host: spring-es-elasticsearchdb
   port: 9300
   cluster:
-    name: spring-es
+    name: spring-es-sample
 

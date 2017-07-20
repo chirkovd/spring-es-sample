@@ -3,9 +3,12 @@ package com.dipegroup.sample.dao;
 import com.dipegroup.exceptions.models.AppException;
 import com.dipegroup.sample.models.MongoShopItem;
 import com.dipegroup.sample.repositories.ShopItemRepository;
+import com.dipegroup.sample.services.mongo.SequenceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -23,8 +26,17 @@ public class MongoShopItemsDao implements ShopItemsDao {
     @Autowired
     private ShopItemRepository repository;
 
+    @Autowired
+    private SequenceService sequenceService;
+
+    @Autowired
+    private AuditorAware<String> auditorAware;
+
     @Override
     public MongoShopItem create(MongoShopItem item) throws AppException {
+        item.setId(sequenceService.getNextSequenceId(MongoShopItem.COLLECTION_NAME));
+        item.setCreated(LocalDate.now());
+        item.setCreatedBy(auditorAware.getCurrentAuditor());
         return repository.save(item);
     }
 
@@ -61,5 +73,6 @@ public class MongoShopItemsDao implements ShopItemsDao {
     @Override
     public void clean() {
         repository.deleteAll();
+        sequenceService.cleanSequences(MongoShopItem.COLLECTION_NAME);
     }
 }
